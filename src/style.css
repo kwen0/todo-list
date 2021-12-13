@@ -61,7 +61,7 @@ ul {
 }
 
 input, select {
-    margin-top: 0.6em;
+    margin-top: 1.5em;
     background: transparent;
     border: 0;
     font-family: "Lato";
@@ -71,4 +71,10 @@ input, select {
 .add:hover {
     opacity: 0.5;
     font-style: italic;
+}
+
+th {
+    font-size: 0.7em;
+    opacity: 0.5;
+    text-align: left;
 }
