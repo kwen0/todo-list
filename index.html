@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <div class="container">
+
+        <div class="sidebar">
+            <h2>Projects</h2>
+            <div class="projects-container">
+                <ul>Gym</ul>
+                <ul class="current-project">Work</ul>
+                <ul>Grocery List</ul>
+            </div>
+            <input class="add new-project" placeholder="add new project..">
+            <button class="submit-project-btn">Add</button>
+        </div>
+
+        <div class="content">
+            <div class="project-name">Work</div>
+            <div class="tasks-container">
+                <ul>Data entry</ul>
+                <ul>Complete weekly report</ul>
+            </div>
+            <form action="">
+                <input class="add new-task" placeholder="add new task..">
+                <select class="priority">
+                    <option value="" disabled selected>Priority</option>
+                    <option>High</option>
+                    <option>Normal</option>
+                </select>
+                <input class="due-date" type=date>
+                <button class="submit-task-btn">Add</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>
