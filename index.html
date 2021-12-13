@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>To-Do List</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="main.js" defer></script>
 </head>
 <body>
@@ -21,10 +22,27 @@
 
         <div class="content">
             <div class="project-name">Work</div>
-            <div class="tasks-container">
-                <ul>Data entry</ul>
-                <ul>Complete weekly report</ul>
-            </div>
+            <table style="width:100%" class="tasks-table">
+                <tr>
+                    <th style="width:70%"></th>
+                    <th>Priority</th>
+                    <th>Due Date</th>
+                </tr>
+                <tr class="task-row">
+                    <td>Data entry</td>
+                    <td>!!</td>
+                    <td>12/15/2021</td>
+                    <td><button><i class='fas fa-wrench'></i></button></td>
+                    <td><button><i class='far fa-trash-alt'></i></button></td>
+                </tr>
+                <tr class="task-row">
+                    <td>Comeplete weekly report</td>
+                    <td>!</td>
+                    <td>12/20/2021</td>
+                    <td><button><i class='fas fa-wrench'></i></button></td>
+                    <td><button><i class='far fa-trash-alt'></i></button></td>
+                </tr>
+            </table>
             <form action="">
                 <input class="add new-task" placeholder="add new task..">
                 <select class="priority">
