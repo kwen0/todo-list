@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    background-color: rgb(255, 255, 223);
+    color: rgb(92, 92, 92);
+    font-family: "Lato";
+}
+
+h2 {
+    margin-bottom: 0.6em;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    height: 60vh;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+.content {
+    background: white;
+    width: 40vw;
+    padding: 30px;
+    border-radius: 2em;
+    box-shadow: 0 0 10px 5px rgb(253, 239, 178);
+}
+
+.project-name {
+    font-size: 1.2em;
+    margin-bottom: 0.6em;
+    font-weight: bold;
+}
+
+button {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background: transparent; 
+    opacity: 0.5;
+    font-family: "Lato";
+}
+
+button:hover {
+    opacity: 1;
+}
+
+.projects-container ul:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.current-project {
+    font-weight: bolder;
+}
+
+ul {
+    border: 0;
+    margin: 0;
+    padding: 0.4em;
+}
+
+input, select {
+    margin-top: 0.6em;
+    background: transparent;
+    border: 0;
+    font-family: "Lato";
+    opacity: 0.5;
+}
+
+.add:hover {
+    opacity: 0.5;
+    font-style: italic;
+}
