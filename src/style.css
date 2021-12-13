@@ -6,8 +6,12 @@ body {
 }
 
 h2 {
-    margin-bottom: 0.6em;
+    margin-bottom: 0;
     padding: 0;
+}
+
+.sidebar {
+    font-size: 1.5em;
 }
 
 .container {
@@ -20,15 +24,14 @@ h2 {
 
 .content {
     background: white;
-    width: 40vw;
+    width: 50vw;
     padding: 30px;
     border-radius: 2em;
-    box-shadow: 0 0 10px 5px rgb(253, 239, 178);
+    box-shadow: 0 0 80px 10px rgb(253, 239, 178);
 }
 
 .project-name {
     font-size: 1.2em;
-    margin-bottom: 0.6em;
     font-weight: bold;
 }
 
@@ -39,6 +42,7 @@ button {
     background: transparent; 
     opacity: 0.5;
     font-family: "Lato";
+    transition: opacity 200ms ease-in;
 }
 
 button:hover {
@@ -47,34 +51,46 @@ button:hover {
 
 .projects-container ul:hover{
     cursor: pointer;
-    opacity: 0.5;
+    transition: opacity 200ms ease-in;
+    opacity: 1;
 }
 
-.current-project {
+.current-project  {
     font-weight: bolder;
+    margin-left: 2em;
+    opacity: 1;
 }
 
 ul {
     border: 0;
     margin: 0;
     padding: 0.4em;
+    opacity: 0.5;
 }
 
 input, select {
-    margin-top: 1.5em;
     background: transparent;
     border: 0;
     font-family: "Lato";
     opacity: 0.5;
 }
 
-.add:hover {
-    opacity: 0.5;
-    font-style: italic;
+.add:focus, .add:hover {
+    transition: 300ms ease-in;
+    opacity: 1;
 }
 
 th {
     font-size: 0.7em;
     opacity: 0.5;
     text-align: left;
+}
+
+td {
+    padding-bottom: 1em;
+}
+
+.delete-project {
+    font-size: 1em;
+    margin-left: -30px;
 }

@@ -23,38 +23,45 @@
         <div class="content">
             <div class="project-name">Work</div>
             <table style="width:100%" class="tasks-table">
-                <tr>
-                    <th style="width:70%"></th>
-                    <th>Priority</th>
-                    <th>Due Date</th>
-                </tr>
-                <tr class="task-row">
-                    <td>Data entry</td>
-                    <td>!!</td>
-                    <td>12/15/2021</td>
-                    <td><button><i class='fas fa-wrench'></i></button></td>
-                    <td><button><i class='far fa-trash-alt'></i></button></td>
-                </tr>
-                <tr class="task-row">
-                    <td>Comeplete weekly report</td>
-                    <td>!</td>
-                    <td>12/20/2021</td>
-                    <td><button><i class='fas fa-wrench'></i></button></td>
-                    <td><button><i class='far fa-trash-alt'></i></button></td>
-                </tr>
+                <tbody>
+                    <thead>
+                        <tr>
+                            <th style="width:70%"></th>
+                            <th>Priority</th>
+                            <th>Due Date</th>
+                        </tr>
+                    </thead>
+                    <tr class="task-row">
+                        <td>Data entry</td>
+                        <td>High</td>
+                        <td>12/15/2021</td>
+                        <td><button><i class='fas fa-wrench'></i></button></td>
+                        <td><button><i class='far fa-trash-alt'></i></button></td>
+                    </tr>
+                    <tr class="task-row">
+                        <td>Complete weekly report</td>
+                        <td>Low</td>
+                        <td>12/20/2021</td>
+                        <td><button><i class='fas fa-wrench'></i></button></td>
+                        <td><button><i class='far fa-trash-alt'></i></button></td>
+                    </tr>
+                </tbody>
             </table>
             <form action="">
                 <input class="add new-task" placeholder="add new task..">
                 <select class="priority">
                     <option value="" disabled selected>Priority</option>
                     <option>High</option>
-                    <option>Normal</option>
+                    <option>Low</option>
                 </select>
                 <input class="due-date" type=date>
                 <button class="submit-task-btn">Add</button>
             </form>
         </div>
-
+        <div>
+            <button class="delete-project"><i class='fas fa-times'></i></button>
+        </div>
     </div>
+
 </body>
 </html>
