@@ -67,6 +67,10 @@ ul {
     opacity: 0.5;
 }
 
+ul:first-letter, td:first-letter {
+    text-transform: capitalize;
+}
+
 input, select {
     background: transparent;
     border: 0;
@@ -74,7 +78,7 @@ input, select {
     opacity: 0.5;
 }
 
-.add:focus, .add:hover {
+input:focus, input:hover {
     transition: 300ms ease-in;
     opacity: 1;
 }
@@ -95,4 +99,8 @@ td {
     margin-top: 60px;
     font-size: 1em;
     margin-left: -40px;
+}
+
+i {
+    opacity: 0.3;
 }
