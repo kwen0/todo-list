@@ -50,7 +50,7 @@
                 </tbody>
             </table>
             <form action="" class="add-new-task">
-                <input class="add-task" placeholder="add new task..">
+                <input class="title" placeholder="add new task..">
                 <select class="priority">
                     <option value="" disabled selected>Priority</option>
                     <option>High</option>
@@ -64,6 +64,14 @@
             <button class="delete-project-btn"><i class='fas fa-times'></i></button>
         </div>
     </div>
-
+    <template class="task-template">
+        <tr class="task-row">
+            <td id="title"></td>
+            <td id="priority"></td>
+            <td id="duedate"></td>
+            <td><button><i class='fas fa-wrench'></i></button></td>
+            <td><button><i class='far fa-trash-alt'></i></button></td>
+        </tr>
+    </template>
 </body>
 </html>
