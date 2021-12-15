@@ -4,6 +4,7 @@ import { projects } from './index.js'
 const projectsContainer = document.querySelector('.projects-container')
 const taskTemplate = document.querySelector('.task-template')
 const taskTable = document.querySelector('.task-table')
+const projectName = document.querySelector('#project-name')
 
 function renderProjects() {
     reset(projectsContainer)
@@ -16,6 +17,7 @@ function renderProjects() {
 
 function renderTasks(currentProject) {
     reset(taskTable)
+    projectName.textContent = currentProject.name
     currentProject.tasks.forEach(task => { 
         const taskElement = document.importNode(taskTemplate.content, true)
         const title = taskElement.querySelector('#title')

@@ -16,13 +16,12 @@ h2 {
 .container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 60px;
 }
 
 .content {
     background: white;
-    align-self: flex-start;
     margin-top: 60px;
     width: 50vw;
     padding: 30px;
@@ -30,7 +29,7 @@ h2 {
     box-shadow: 0 0 80px 10px rgb(253, 239, 178);
 }
 
-.projectname {
+#project-name {
     font-size: 1.2em;
     font-weight: bold;
 }
@@ -95,7 +94,6 @@ td {
 }
 
 .delete {
-    align-self: flex-start;
     margin-top: 60px;
     font-size: 1em;
     margin-left: -40px;
@@ -103,4 +101,10 @@ td {
 
 i {
     opacity: 0.3;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
 }

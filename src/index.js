@@ -9,38 +9,51 @@ const projectNameInput = document.querySelector('.project-name')
 const titleInput = document.querySelector('.title')
 const priorityInput = document.querySelector('.priority')
 const duedateInput = document.querySelector('.due-date')
+const deleteProjectBtn = document.querySelector('.delete-project-btn')
+const projectsContainer = document.querySelector('.projects-container')
+const projectName = document.querySelector('#project-name')
 
 export const projects = [
     {
         id: '1',
-        name: 'gym',
+        name: 'Gym',
         tasks: [
             {
-            id: '22',
-            title: 'lifting',
-            priority: 'low',
-            duedate: '12-2',
+            title: 'Bulgarian Split Squats',
+            priority: 'Low',
+            duedate: '12/20/2021',
             notes: '',
         },
         {
-            id: '23',
-            title: 'fres',
-            priority: 'fs2',
-            duedate: '12-2',
+            title: 'Romanian Deadlifts',
+            priority: 'High',
+            duedate: '12/30/2021',
             notes: '',
         },
         ],
     },
     {
         id: '2',
-        name: 'grocery',
-        tasks: [],
+        name: 'Work',
+        tasks: [
+            {
+            title: 'Data entry',
+            priority: 'Low',
+            duedate: '12/23/2021',
+            notes: '',
+        },
+        {
+            title: 'Complete weekly report',
+            priority: 'Low',
+            duedate: '12/30/2021',
+            notes: '',
+        },
+        ],
     },
 ];
 
 function createProject(name) {
     return {
-        id: Date.now().toString(),
         name,
         tasks: [],
     };
@@ -48,7 +61,6 @@ function createProject(name) {
 
 function createTask(title, priority, duedate) {
     return {
-        id: Date.now().toString(),
         title,
         priority,
         duedate,
@@ -71,11 +83,23 @@ addTaskForm.addEventListener('submit', e => {
     const title = titleInput.value
     const priority = priorityInput.value
     const duedate = duedateInput.value
+    if (title == null || title == '') return
     const task = createTask(title, priority, duedate)
-    const currentProject = projects.find(project => project.id === '2')
+    const currentProject = projects.find(project => project.name === projectName.textContent)
     currentProject.tasks.push(task)
     renderTasks(currentProject)
     titleInput.value = null
     priorityInput.selectedIndex = 0
     duedateInput.value = null
+})
+
+deleteProjectBtn.addEventListener('click', e => {
+    window.confirm("Are you sure you want to delete this project?")
+})
+
+projectsContainer.addEventListener('click', e => {
+    if (e.target.tagName === 'UL') {
+        const currentProject = projects.find(project => project.name === e.target.textContent)
+        renderTasks(currentProject)
+    }
 })
