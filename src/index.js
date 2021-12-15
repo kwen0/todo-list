@@ -1,37 +1,46 @@
 import './style.css';
 import "@fontsource/lato";
-import { format } from 'date-fns'
+import { format } from 'date-fns';
+import { renderProjects, renderTasks } from './render.js'
 
-const addProject = document.querySelector('.add-new-project')
-const addTask = document.querySelector('add-new-task')
-const projectsContainer = document.querySelector('.projects-container')
-const projectNameInput = document.querySelector('.add-project')
-const taskTemplate = document.querySelector('.task-template')
-const tasksTable = document.querySelector('.tasks-table')
-const taskTitle = document.querySelector('.title')
-const taskPriority = document.querySelector('.priority')
-const taskDueDate = document.querySelector('.due-date')
+const addProjectForm = document.querySelector('.add-new-project')
+const addTaskForm = document.querySelector('.add-new-task')
+const projectNameInput = document.querySelector('.project-name')
+const titleInput = document.querySelector('.title')
+const priorityInput = document.querySelector('.priority')
+const duedateInput = document.querySelector('.due-date')
 
-
-const projects = [];
-
-function renderProjects() {
-    reset(projectsContainer);
-    projects.forEach(project => {
-        const projectName = document.createElement('ul');
-        projectName.textContent = project.name;
-        projectsContainer.appendChild(projectName);
-    });
-}
-
-function reset(element) {
-    while (element.firstChild) {
-        element.removeChild(element.firstChild);
-    }
-}
+export const projects = [
+    {
+        id: '1',
+        name: 'gym',
+        tasks: [
+            {
+            id: '22',
+            title: 'lifting',
+            priority: 'low',
+            duedate: '12-2',
+            notes: '',
+        },
+        {
+            id: '23',
+            title: 'fres',
+            priority: 'fs2',
+            duedate: '12-2',
+            notes: '',
+        },
+        ],
+    },
+    {
+        id: '2',
+        name: 'grocery',
+        tasks: [],
+    },
+];
 
 function createProject(name) {
     return {
+        id: Date.now().toString(),
         name,
         tasks: [],
     };
@@ -39,39 +48,34 @@ function createProject(name) {
 
 function createTask(title, priority, duedate) {
     return {
+        id: Date.now().toString(),
         title,
         priority,
         duedate,
-        notes
+        notes: '',
     };
 }
 
-addProject.addEventListener('submit', e => {
-    e.preventDefault();
-    const name = projectNameInput.value;
+addProjectForm.addEventListener('submit', e => {
+    e.preventDefault()
+    const name = projectNameInput.value
     if (name == null || name == '') return
-    const project = createProject(name);
-    projects.push(project);
-    renderProjects();
-    projectNameInput.value = null;
+    const project = createProject(name)
+    projects.push(project)
+    renderProjects()
+    projectNameInput.value = null
 })
 
-function renderTasks(project) {
-    const taskElement = document.importNode(taskTemplate.content, true)
-    const title = taskElement.querySelector('#title')
-    const priority = taskElement.querySelector('#priority')
-    const duedate = taskElement.querySelector('#duedate')
-    title.textContent = project.title
-    priority.textContent = project.priority
-    duedate.textContent = format(project.duedate, 'MMM dd')
-    tasksTable.appendChild(taskElement);
-}
-
-addTask.addEventListener('submit', e => {
+addTaskForm.addEventListener('submit', e => {
     e.preventDefault();
-    const title = taskTitle.value
-    const priority = taskPriority.value
-    const duedate = taskDueDate.value
-    const task = createTask(title, priority, duedate);
-    renderTasks();
+    const title = titleInput.value
+    const priority = priorityInput.value
+    const duedate = duedateInput.value
+    const task = createTask(title, priority, duedate)
+    const currentProject = projects.find(project => project.id === '2')
+    currentProject.tasks.push(task)
+    renderTasks(currentProject)
+    titleInput.value = null
+    priorityInput.selectedIndex = 0
+    duedateInput.value = null
 })

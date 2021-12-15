@@ -30,7 +30,7 @@ h2 {
     box-shadow: 0 0 80px 10px rgb(253, 239, 178);
 }
 
-.project-name {
+.projectname {
     font-size: 1.2em;
     font-weight: bold;
 }
@@ -78,7 +78,7 @@ input, select {
     opacity: 0.5;
 }
 
-input:focus, input:hover {
+input:focus, input:hover, select:focus, select:hover {
     transition: 300ms ease-in;
     opacity: 1;
 }
