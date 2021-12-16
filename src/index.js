@@ -13,6 +13,7 @@ const deleteProjectBtn = document.querySelector('.delete-project-btn')
 const projectsContainer = document.querySelector('.projects-container')
 const projectName = document.querySelector('#project-name')
 const tasksContainer = document.querySelector('.tasks-container')
+const deleteTaskBtn = document.querySelectorAll("#delete-task-btn")
 
 export const projects = [
     {
@@ -71,6 +72,10 @@ addProjectForm.addEventListener('submit', e => {
     e.preventDefault()
     const name = projectNameInput.value
     if (name == null || name == '') return
+    if (projects.find(project => project.name.toLowerCase() == name.toLowerCase()) != null) {
+        alert (`You already have a project named ${name}!`)
+        return
+    }
     const project = createProject(name)
     projects.push(project)
     renderProjects()
@@ -97,8 +102,8 @@ deleteProjectBtn.addEventListener('click', e => {
         const currentProject = projects.find(project => project.name === projectName.textContent)
         projects.splice(projects.indexOf(currentProject), 1)
         renderProjects()
-        tasksContainer.style.opacity = 0
-        deleteProjectBtn.style.opacity = 0
+        tasksContainer.style.visibility = 'hidden'
+        deleteProjectBtn.style.visibility = 'hidden'
     }
 })
 
@@ -106,7 +111,7 @@ projectsContainer.addEventListener('click', e => {
     if (e.target.tagName === 'UL') {
         const currentProject = projects.find(project => project.name === e.target.textContent)
         renderTasks(currentProject)
-        tasksContainer.style.opacity = 1
-        deleteProjectBtn.style.opacity = 1
+        tasksContainer.style.visibility = 'visible'
+        deleteProjectBtn.style.visibility = 'visible'
     }
 })

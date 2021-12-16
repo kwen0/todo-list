@@ -28,10 +28,33 @@ function renderTasks(currentProject) {
         duedate.textContent = task.duedate
         taskTable.appendChild(taskElement)
     })
+    editTaskBtn()
+    deleteTaskBtn()
 }
 
 function reset(element) {
     while (element.firstChild) {
         element.removeChild(element.firstChild)
     }
+}
+
+function editTaskBtn() {
+    const editTaskBtn = document.querySelectorAll('#edit-task-btn')
+    editTaskBtn.forEach(btn => {
+        btn.addEventListener('click', e => {
+            e.target.parentNode.parentNode.parentNode.childNodes[1].contentEditable = 'true'
+        })
+    })
+}
+
+function deleteTaskBtn() {
+    const deleteTaskBtn = document.querySelectorAll('#delete-task-btn')
+    deleteTaskBtn.forEach(btn => {
+        btn.addEventListener('click', e => {
+            const currentProject = projects.find(project => project.name === projectName.textContent)
+            const currentTask = currentProject.tasks.find(task => task.title === e.target.parentNode.parentNode.parentNode.childNodes[1].textContent)
+            currentProject.tasks.splice(currentProject.tasks.indexOf(currentTask), 1)
+            e.target.parentNode.parentNode.parentNode.remove()
+        })
+    })
 }
