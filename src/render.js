@@ -1,9 +1,9 @@
 export { renderProjects, renderTasks, reset }
 import { projects } from './index.js'
 
-const projectsContainer = document.querySelector('.projects-container')
 const taskTemplate = document.querySelector('.task-template')
 const taskTable = document.querySelector('.task-table')
+const projectsContainer = document.querySelector('.projects-container')
 const projectName = document.querySelector('#project-name')
 
 function renderProjects() {

@@ -12,10 +12,10 @@ const duedateInput = document.querySelector('.due-date')
 const deleteProjectBtn = document.querySelector('.delete-project-btn')
 const projectsContainer = document.querySelector('.projects-container')
 const projectName = document.querySelector('#project-name')
+const tasksContainer = document.querySelector('.tasks-container')
 
 export const projects = [
     {
-        id: '1',
         name: 'Gym',
         tasks: [
             {
@@ -33,7 +33,6 @@ export const projects = [
         ],
     },
     {
-        id: '2',
         name: 'Work',
         tasks: [
             {
@@ -94,12 +93,20 @@ addTaskForm.addEventListener('submit', e => {
 })
 
 deleteProjectBtn.addEventListener('click', e => {
-    window.confirm("Are you sure you want to delete this project?")
+    if (confirm("Are you sure you want to delete this project?")) {
+        const currentProject = projects.find(project => project.name === projectName.textContent)
+        projects.splice(projects.indexOf(currentProject), 1)
+        renderProjects()
+        tasksContainer.style.opacity = 0
+        deleteProjectBtn.style.opacity = 0
+    }
 })
 
 projectsContainer.addEventListener('click', e => {
     if (e.target.tagName === 'UL') {
         const currentProject = projects.find(project => project.name === e.target.textContent)
         renderTasks(currentProject)
+        tasksContainer.style.opacity = 1
+        deleteProjectBtn.style.opacity = 1
     }
 })
