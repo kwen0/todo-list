@@ -9,9 +9,9 @@ const projectName = document.querySelector('#project-name')
 function renderProjects() {
     reset(projectsContainer)
     projects.forEach(project => {
-        const projectName = document.createElement('ul')
-        projectName.textContent = project.name
-        projectsContainer.appendChild(projectName)
+        const projectUl = document.createElement('ul')
+        projectUl.textContent = project.name
+        projectsContainer.appendChild(projectUl)
     })
 }
 
@@ -51,10 +51,14 @@ function deleteTaskBtn() {
     const deleteTaskBtn = document.querySelectorAll('#delete-task-btn')
     deleteTaskBtn.forEach(btn => {
         btn.addEventListener('click', e => {
-            const currentProject = projects.find(project => project.name === projectName.textContent)
-            const currentTask = currentProject.tasks.find(task => task.title === e.target.parentNode.parentNode.parentNode.childNodes[1].textContent)
-            currentProject.tasks.splice(currentProject.tasks.indexOf(currentTask), 1)
-            e.target.parentNode.parentNode.parentNode.remove()
+            findAndDeleteTask(e);
         })
     })
+}
+
+function findAndDeleteTask(e) {
+    const currentProject = projects.find(project => project.name === projectName.textContent)
+    const currentTask = currentProject.tasks.find(task => task.title === e.target.parentNode.parentNode.parentNode.childNodes[1].textContent)
+    currentProject.tasks.splice(currentProject.tasks.indexOf(currentTask), 1)
+    e.target.parentNode.parentNode.parentNode.remove()
 }
