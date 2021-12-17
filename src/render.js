@@ -1,12 +1,14 @@
-export { renderProjects, renderTasks, reset }
+import { activateDeleteTaskBtn } from './add-edit-del.js'
 import { projects } from './index.js'
 
 const taskTemplate = document.querySelector('.task-template')
 const taskTable = document.querySelector('.task-table')
 const projectsContainer = document.querySelector('.projects-container')
 const projectName = document.querySelector('#project-name')
+const tasksContainer = document.querySelector('.tasks-container')
+const deleteProjectBtn = document.querySelector('.delete-project-btn')
 
-function renderProjects() {
+export function renderProjects() {
     reset(projectsContainer)
     projects.forEach(project => {
         const projectUl = document.createElement('ul')
@@ -15,7 +17,19 @@ function renderProjects() {
     })
 }
 
-function renderTasks(currentProject) {
+export function renderSelectedProject(e) {
+    if (e.target.tagName === 'UL') {
+        const previousProject = document.querySelector(".current-project")
+        if (previousProject != null) previousProject.classList.remove("current-project")
+        e.target.classList.add("current-project")
+        const currentProject = projects.find(project => project.name === e.target.textContent)
+        renderTasks(currentProject)
+        tasksContainer.style.visibility = 'visible'
+        deleteProjectBtn.style.visibility = 'visible'
+    }
+}
+
+export function renderTasks(currentProject) {
     reset(taskTable)
     projectName.textContent = currentProject.name
     currentProject.tasks.forEach(task => { 
@@ -28,37 +42,12 @@ function renderTasks(currentProject) {
         duedate.textContent = task.duedate
         taskTable.appendChild(taskElement)
     })
-    editTaskBtn()
-    deleteTaskBtn()
+    // activateEditTaskBtn()
+    activateDeleteTaskBtn()
 }
 
-function reset(element) {
+export function reset(element) {
     while (element.firstChild) {
         element.removeChild(element.firstChild)
     }
-}
-
-function editTaskBtn() {
-    const editTaskBtn = document.querySelectorAll('#edit-task-btn')
-    editTaskBtn.forEach(btn => {
-        btn.addEventListener('click', e => {
-            e.target.parentNode.parentNode.parentNode.childNodes[1].contentEditable = 'true'
-        })
-    })
-}
-
-function deleteTaskBtn() {
-    const deleteTaskBtn = document.querySelectorAll('#delete-task-btn')
-    deleteTaskBtn.forEach(btn => {
-        btn.addEventListener('click', e => {
-            findAndDeleteTask(e);
-        })
-    })
-}
-
-function findAndDeleteTask(e) {
-    const currentProject = projects.find(project => project.name === projectName.textContent)
-    const currentTask = currentProject.tasks.find(task => task.title === e.target.parentNode.parentNode.parentNode.childNodes[1].textContent)
-    currentProject.tasks.splice(currentProject.tasks.indexOf(currentTask), 1)
-    e.target.parentNode.parentNode.parentNode.remove()
 }

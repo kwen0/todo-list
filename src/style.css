@@ -86,11 +86,11 @@ th {
     font-size: 0.7em;
     opacity: 0.5;
     text-align: left;
-    padding-bottom: 1em;
 }
 
-td {
-    padding-bottom: 1em;
+table {
+    border-collapse: separate; 
+    border-spacing: 0 1em;
 }
 
 .delete {
