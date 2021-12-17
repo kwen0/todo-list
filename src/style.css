@@ -91,6 +91,7 @@ th {
 table {
     border-collapse: separate; 
     border-spacing: 0 1em;
+    table-layout:fixed;
 }
 
 .delete {

@@ -1,6 +1,6 @@
 import './style.css';
 import "@fontsource/lato";
-import { renderSelectedProject } from './render.js'
+import { renderProjects, renderSelectedProject, renderTasks } from './render.js'
 import { addProject, addTask, deleteProject } from './add-edit-del.js'
 
 const addProjectForm = document.querySelector('.add-new-project')
@@ -66,3 +66,7 @@ addTaskForm.addEventListener('submit', e => addTask(e))
 deleteProjectBtn.addEventListener('click', e => deleteProject())
 projectsContainer.addEventListener('click', e => renderSelectedProject(e))
 
+renderProjects()
+renderTasks(projects[0])
+const lists = document.querySelectorAll('ul')
+lists[0].classList.add('current-project')
