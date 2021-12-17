@@ -11,11 +11,7 @@
 
         <div class="sidebar">
             <h2>Projects</h2>
-            <div class="projects-container">
-                <ul>Gym</ul>
-                <ul class="current-project">Work</ul>
-                <ul>Grocery List</ul>
-            </div>
+            <div class="projects-container"></div>
             <form action="" class="add-new-project">
                 <input class="project-name" placeholder="add new project..">
                 <button class="submit-project-btn">Add</button>
@@ -23,30 +19,20 @@
         </div>
 
         <div class="tasks-container">
-            <div id="project-name">Work</div>
+            <div id="project-name"></div>
             <table style="width:100%">
+                <col width="70%" />
+                <col width="8%" />
+                <col width="16%" />
+                <col width="3%" />
                 <thead>
                     <tr>
-                        <th style="width:70%"></th>
+                        <th></th>
                         <th>Priority</th>
                         <th>Due Date</th>
                     </tr>
                 </thead>
                 <tbody class="task-table">
-                    <tr>
-                        <td>Data entry</td>
-                        <td>High</td>
-                        <td>12/15/2021</td>
-                        <td><button id="edit-task-btn"><i class='fas fa-wrench'></i></button></td>
-                        <td><button id="delete-task-btn"><i class='far fa-trash-alt'></i></button></td>
-                    </tr>
-                    <tr>
-                        <td>Complete weekly report</td>
-                        <td>Low</td>
-                        <td>12/20/2021</td>
-                        <td><button id="edit-task-btn"><i class='fas fa-wrench'></i></button></td>
-                        <td><button id="delete-task-btn"><i class='far fa-trash-alt'></i></button></td>
-                    </tr>
                 </tbody>
             </table>
             <form action="" class="add-new-task">
