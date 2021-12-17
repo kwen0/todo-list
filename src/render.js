@@ -1,4 +1,4 @@
-import { activateDeleteTaskBtn } from './add-edit-del.js'
+import { activateDeleteTaskBtn, activateEditTaskBtn } from './add-edit-del.js'
 import { projects } from './index.js'
 
 const taskTemplate = document.querySelector('.task-template')
@@ -42,7 +42,7 @@ export function renderTasks(currentProject) {
         duedate.textContent = task.duedate
         taskTable.appendChild(taskElement)
     })
-    // activateEditTaskBtn()
+    activateEditTaskBtn()
     activateDeleteTaskBtn()
 }
 

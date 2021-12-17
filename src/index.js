@@ -58,7 +58,7 @@ export function createTask(title, priority, duedate) {
         priority,
         duedate,
         notes: '',
-    };
+    }
 }
 
 addProjectForm.addEventListener('submit', e => addProject(e))
@@ -66,6 +66,7 @@ addTaskForm.addEventListener('submit', e => addTask(e))
 deleteProjectBtn.addEventListener('click', e => deleteProject())
 projectsContainer.addEventListener('click', e => renderSelectedProject(e))
 
+// default
 renderProjects()
 renderTasks(projects[0])
 const lists = document.querySelectorAll('ul')

@@ -35,11 +35,11 @@ export function addTask(e) {
     document.querySelector('.due-date').value = null
 }
 
-function editTaskBtn() {
+export function activateEditTaskBtn() {
     const editTaskBtn = document.querySelectorAll('#edit-task-btn')
     editTaskBtn.forEach(btn => {
         btn.addEventListener('click', e => {
-            console.log('hi')
+            showEditModal(e)
         })
     })
 }
@@ -68,4 +68,14 @@ export function deleteProject() {
         tasksContainer.style.visibility = 'hidden'
         deleteProjectBtn.style.visibility = 'hidden'
     }
+}
+
+function showEditModal(e) {
+    const modal = document.querySelector(".modal");
+    modal.classList.toggle("show-modal")
+    const target = e.target.parentNode.parentNode.parentNode.childNodes[1]
+    const title = document.querySelector('.edit-title')
+    const priority = document.querySelector('.edit-priority')
+    const duedate = document.querySelector('.edit-due-date')
+    title.value = target.textContent
 }
