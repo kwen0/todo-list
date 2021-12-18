@@ -13,8 +13,8 @@
             <h2>Projects</h2>
             <div class="projects-container"></div>
             <form action="" class="add-new-project">
+                <button class="submit-project-btn"><i class="fas fa-plus"></i></button>
                 <input class="project-name" placeholder="add new project..">
-                <button class="submit-project-btn">Add</button>
             </form>
         </div>
 
@@ -36,6 +36,7 @@
                 </tbody>
             </table>
             <form action="" class="add-new-task">
+                <button class="submit-task-btn"><i class="fas fa-plus"></i></button>
                 <input class="title" placeholder="add new task..">
                 <select class="priority">
                     <option value="" disabled selected>Priority</option>
@@ -44,20 +45,24 @@
                     <option>Low</option>
                 </select>
                 <input class="due-date" type=date>
-                <button class="submit-task-btn">Add</button>
             <div class="modal">
                 <div class="modal-content">
                     <form action="">
-                        <input class="edit-title">
-                        <select class="edit-priority">
-                            <option value="" disabled selected>Priority</option>
-                            <option>High</option>
-                            <option>Med</option>
-                            <option>Low</option>
-                        </select>
-                        <input class="edit-due-date" type=date>
-                        <button class="save-task-btn">Save</button>
-                        <button class="close-btn">Cancel</button>
+                        <div class="modal-data">
+                            <input class="edit-title">
+                            <select class="edit-priority">
+                                <option value="" disabled selected>Priority</option>
+                                <option>High</option>
+                                <option>Med</option>
+                                <option>Low</option>
+                            </select>
+                            <input class="edit-due-date" type=date>
+                        </div>
+                        <textarea class="notes" placeholder="add notes..."></textarea>
+                        <div class="btns">
+                            <button class="save-task-btn">Save</button>
+                            <button class="close-btn">Cancel</button>
+                        </div>
                 </div>
             </div>
 
@@ -72,7 +77,7 @@
             <td id="title"></td>
             <td id="priority"></td>
             <td id="duedate"></td>
-            <td><button id="edit-task-btn"><i class='fas fa-wrench'></i></button></td>
+            <td><button id="edit-task-btn"><i class='fas fa-edit'></i></button></td>
             <td><button id="delete-task-btn"><i class='far fa-trash-alt'></i></button></td>
         </tr>
     </template>
