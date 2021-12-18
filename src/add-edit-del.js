@@ -39,7 +39,7 @@ export function activateEditTaskBtn() {
     const editTaskBtn = document.querySelectorAll('#edit-task-btn')
     editTaskBtn.forEach(btn => {
         btn.addEventListener('click', e => {
-            showEditModal(e)
+            renderModal(e)
         })
     })
 }
@@ -54,8 +54,9 @@ export function activateDeleteTaskBtn() {
 }
 
 function findAndDeleteTask(e) {
+    const target = e.target.parentNode.parentNode.parentNode.childNodes[1]
     const currentProject = projects.find(project => project.name === projectName.textContent)
-    const currentTask = currentProject.tasks.find(task => task.title === e.target.parentNode.parentNode.parentNode.childNodes[1].textContent)
+    const currentTask = currentProject.tasks.find(task => task.title === target.textContent)
     currentProject.tasks.splice(currentProject.tasks.indexOf(currentTask), 1)
     e.target.parentNode.parentNode.parentNode.remove()
 }
@@ -70,12 +71,20 @@ export function deleteProject() {
     }
 }
 
-function showEditModal(e) {
+function renderModal(e) {
     const modal = document.querySelector(".modal");
-    modal.classList.toggle("show-modal")
+    modal.classList.add('visible')
     const target = e.target.parentNode.parentNode.parentNode.childNodes[1]
+    const currentProject = projects.find(project => project.name === projectName.textContent)
+    const currentTask = currentProject.tasks.find(task => task.title === target.textContent)
     const title = document.querySelector('.edit-title')
     const priority = document.querySelector('.edit-priority')
     const duedate = document.querySelector('.edit-due-date')
-    title.value = target.textContent
+    const notes = document.querySelector('.notes')
+    title.value = currentTask.title
+    priority.value = currentTask.priority
+    duedate.value = currentTask.duedate
+    notes.value = currentTask.notes
+    const closeBtn = document.querySelector(".close-btn")
+    closeBtn.addEventListener('click', e => modal.classList.remove('visible'))
 }

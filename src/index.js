@@ -15,13 +15,13 @@ export const projects = [
             {
             title: 'Bulgarian Split Squats',
             priority: 'Low',
-            duedate: '12/20/2021',
-            notes: '',
+            duedate: '2021-12-23',
+            notes: 'test',
         },
         {
             title: 'Romanian Deadlifts',
             priority: 'High',
-            duedate: '12/30/2021',
+            duedate: '2021-12-30',
             notes: '',
         },
         ],
@@ -32,13 +32,13 @@ export const projects = [
             {
             title: 'Data entry',
             priority: 'Low',
-            duedate: '12/23/2021',
+            duedate: '2021-12-29',
             notes: '',
         },
         {
             title: 'Complete weekly report',
             priority: 'Low',
-            duedate: '12/30/2021',
+            duedate: '2021-12-20',
             notes: '',
         },
         ],
