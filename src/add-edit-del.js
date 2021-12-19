@@ -75,10 +75,8 @@ function renderModal(e) {
     const modal = document.querySelector(".modal");
     modal.classList.add('visible')
     const target = e.target.parentNode.parentNode.parentNode.childNodes[1]
-    console.log(target)
     const currentProject = projects.find(project => project.name === projectName.textContent)
-    const currentTask = currentProject.tasks.find(task => task.title === target.textContent)
-    console.log(currentTask)
+    let currentTask = currentProject.tasks.find(task => task.title === target.textContent)
     const title = document.querySelector('.edit-title')
     const priority = document.querySelector('.edit-priority')
     const duedate = document.querySelector('.edit-due-date')
@@ -87,8 +85,6 @@ function renderModal(e) {
     priority.value = currentTask.priority
     duedate.value = currentTask.duedate
     notes.value = currentTask.notes
-    const closeBtn = document.querySelector(".close-btn")
-    closeBtn.addEventListener('click', e => {modal.classList.remove('visible')}, { once: true })
     const saveBtn = document.querySelector(".save-btn")
     saveBtn.addEventListener('click', e => {
         currentTask.title = title.value
@@ -97,6 +93,11 @@ function renderModal(e) {
         currentTask.notes = notes.value
         modal.classList.remove('visible')
         renderTasks(currentProject)
+    }, { once: true })
+    const closeBtn = document.querySelector(".close-btn")
+    closeBtn.addEventListener('click', e => {
+        currentTask = null
+        modal.classList.remove('visible')
     }, { once: true })
 }
 

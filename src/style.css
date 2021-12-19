@@ -117,7 +117,7 @@ td {
     background-color: rgba(0, 0, 0, 0.5);
     pointer-events: none;
     opacity: 0;
-    will-change: transofrm, opacity;
+    will-change: transform, opacity;
     transform: scale(1.15);
     transition:
       transform 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946),
@@ -160,7 +160,7 @@ td {
 
 .notes {
     height: 50%;
-    width: 100%;
+    width: 99%;
     font-family: "Lato";
     border: transparent;
     margin-bottom: 0.5em;
@@ -177,6 +177,7 @@ td {
 .btns {
     display: flex;
     justify-content: center;
+    align-items: flex-end;
     gap: 10px;
     opacity: 0.8;
 }

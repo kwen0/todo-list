@@ -41,7 +41,7 @@ export const projects = [
             title: 'Schedule doctor\'s appointment',
             priority: 'High',
             duedate: '2021-12-30',
-            notes: '',
+            notes: 'call between 8-4 pm',
         },
         ],
     },
@@ -52,13 +52,13 @@ export const projects = [
             title: 'Zoom meeting with HR',
             priority: 'Low',
             duedate: '2021-12-29',
-            notes: '',
+            notes: 'bring notes from last week\'s meeting',
         },
         {
-            title: 'Finish weekly profit report',
+            title: 'Finish weekly sales report',
             priority: 'High',
             duedate: '2021-12-20',
-            notes: '',
+            notes: 'send out by noon',
         },
         {
             title: 'Coordinate lunch and learn',
@@ -72,7 +72,7 @@ export const projects = [
         name: 'Gym',
         tasks: [
             {
-            title: 'Squat 225 lbs x 4 reps',
+            title: 'Squat 225 lbs',
             priority: 'Low',
             duedate: '2022-01-29',
             notes: '',
