@@ -77,7 +77,7 @@ input, select {
     opacity: 0.5;
 }
 
-input:focus, input:hover, select:focus, select:hover {
+input:focus, input:hover, select:focus, select:hover, textarea:hover {
     transition: 300ms ease-in;
     opacity: 1;
 }
@@ -160,12 +160,14 @@ td {
 
 .notes {
     height: 50%;
+    width: 100%;
     font-family: "Lato";
     border: transparent;
     margin-bottom: 0.5em;
+    opacity: 0.5;
 }
 
-.save-task-btn, .close-btn {
+.save-btn, .close-btn {
     padding: 0.3em;
     background-color:rgb(92, 92, 92);
     color: white;
@@ -177,4 +179,8 @@ td {
     justify-content: center;
     gap: 10px;
     opacity: 0.8;
+}
+
+#sort-priority:hover, #sort-duedate:hover {
+    cursor: pointer;
 }

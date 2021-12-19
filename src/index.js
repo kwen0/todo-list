@@ -1,25 +1,44 @@
 import './style.css';
 import "@fontsource/lato";
 import { renderProjects, renderSelectedProject, renderTasks } from './render.js'
-import { addProject, addTask, deleteProject } from './add-edit-del.js'
+import { addProject, addTask, deleteProject, sortPriority, sortDuedate } from './add-edit-del.js'
 
 const addProjectForm = document.querySelector('.add-new-project')
 const addTaskForm = document.querySelector('.add-new-task')
 const deleteProjectBtn = document.querySelector('.delete-project-btn')
 const projectsContainer = document.querySelector('.projects-container')
+const sortByPriority = document.querySelector('#sort-priority')
+const sortByDuedate = document.querySelector('#sort-duedate')
+
+export function createProject(name) {
+    return { name, tasks: [], }
+}
+
+export function createTask(title, priority, duedate) {
+    return { title, priority, duedate, notes: '', }
+}
+
+addProjectForm.addEventListener('submit', e => addProject(e))
+addTaskForm.addEventListener('submit', e => addTask(e))
+deleteProjectBtn.addEventListener('click', e => deleteProject())
+projectsContainer.addEventListener('click', e => renderSelectedProject(e))
+sortByPriority.addEventListener('click', e => sortPriority())
+sortByDuedate.addEventListener('click', e => sortDuedate())
+
+// default to-do list
 
 export const projects = [
     {
-        name: 'Gym',
+        name: 'Misc',
         tasks: [
             {
-            title: 'Bulgarian Split Squats',
+            title: 'Buy ingredients for cake',
             priority: 'Low',
-            duedate: '2021-12-23',
-            notes: 'test',
+            duedate: '2022-12-23',
+            notes: 'Eggs, flour, milk, cocoa',
         },
         {
-            title: 'Romanian Deadlifts',
+            title: 'Schedule doctor\'s appointment',
             priority: 'High',
             duedate: '2021-12-30',
             notes: '',
@@ -30,44 +49,51 @@ export const projects = [
         name: 'Work',
         tasks: [
             {
-            title: 'Data entry',
+            title: 'Zoom meeting with HR',
             priority: 'Low',
             duedate: '2021-12-29',
             notes: '',
         },
         {
-            title: 'Complete weekly report',
-            priority: 'Low',
+            title: 'Finish weekly profit report',
+            priority: 'High',
             duedate: '2021-12-20',
+            notes: '',
+        },
+        {
+            title: 'Coordinate lunch and learn',
+            priority: 'Med',
+            duedate: '2021-12-24',
+            notes: 'lunch catering phone no.: 212-456-1234',
+        },
+        ],
+    },
+    {
+        name: 'Gym',
+        tasks: [
+            {
+            title: 'Squat 225 lbs x 4 reps',
+            priority: 'Low',
+            duedate: '2022-01-29',
+            notes: '',
+        },
+        {
+            title: 'Renew gym membership',
+            priority: 'Med',
+            duedate: '2022-02-01',
+            notes: '',
+        },
+        {
+            title: 'Work on hip mobility',
+            priority: 'Med',
+            duedate: '2021-12-24',
             notes: '',
         },
         ],
     },
-];
+]
 
-export function createProject(name) {
-    return {
-        name,
-        tasks: [],
-    };
-}
-
-export function createTask(title, priority, duedate) {
-    return {
-        title,
-        priority,
-        duedate,
-        notes: '',
-    }
-}
-
-addProjectForm.addEventListener('submit', e => addProject(e))
-addTaskForm.addEventListener('submit', e => addTask(e))
-deleteProjectBtn.addEventListener('click', e => deleteProject())
-projectsContainer.addEventListener('click', e => renderSelectedProject(e))
-
-// default
 renderProjects()
-renderTasks(projects[0])
+renderTasks(projects[1])
 const lists = document.querySelectorAll('ul')
-lists[0].classList.add('current-project')
+lists[1].classList.add('current-project')

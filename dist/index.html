@@ -28,8 +28,8 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Priority</th>
-                        <th>Due Date</th>
+                        <th id="sort-priority">Priority</th>
+                        <th id="sort-duedate">Due Date</th>
                     </tr>
                 </thead>
                 <tbody class="task-table">
@@ -45,9 +45,9 @@
                     <option>Low</option>
                 </select>
                 <input class="due-date" type=date>
+            </form>
             <div class="modal">
                 <div class="modal-content">
-                    <form action="">
                         <div class="modal-data">
                             <input class="edit-title">
                             <select class="edit-priority">
@@ -60,13 +60,11 @@
                         </div>
                         <textarea class="notes" placeholder="add notes..."></textarea>
                         <div class="btns">
-                            <button class="save-task-btn">Save</button>
+                            <button class="save-btn">Save</button>
                             <button class="close-btn">Cancel</button>
                         </div>
                 </div>
             </div>
-
-            </form>
         </div>
         <div class="delete">
             <button class="delete-project-btn"><i class='fas fa-times'></i></button>
