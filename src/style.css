@@ -167,7 +167,7 @@ td {
     opacity: 0.5;
 }
 
-.save-btn, .close-btn {
+.save-btn {
     padding: 0.3em;
     background-color:rgb(92, 92, 92);
     color: white;
@@ -177,7 +177,6 @@ td {
 .btns {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
     gap: 10px;
     opacity: 0.8;
 }

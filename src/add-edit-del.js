@@ -94,11 +94,6 @@ function renderModal(e) {
         modal.classList.remove('visible')
         renderTasks(currentProject)
     }, { once: true })
-    const closeBtn = document.querySelector(".close-btn")
-    closeBtn.addEventListener('click', e => {
-        currentTask = null
-        modal.classList.remove('visible')
-    }, { once: true })
 }
 
 export function sortDuedate() {
