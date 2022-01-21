@@ -2,6 +2,10 @@ body {
     background-color: rgb(255, 255, 223);
     color: rgb(92, 92, 92);
     font-family: "Lato";
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 h2 {
@@ -183,4 +187,17 @@ td {
 
 #sort-priority:hover, #sort-duedate:hover {
     cursor: pointer;
+}
+
+.github {
+    display: flex;
+    font-size: 15px;
+    gap: 5px;
+    margin-top: auto;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+
+.ghlogo {
+    height: 20px;
 }

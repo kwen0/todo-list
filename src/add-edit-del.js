@@ -1,5 +1,5 @@
 import { projects, createProject, createTask } from './index.js'
-import { renderProjects, renderTasks } from './render.js'
+import { renderProjects, renderTasks, save } from './render.js'
 
 const projectName = document.querySelector('#project-name')
 const tasksContainer = document.querySelector('.tasks-container')
@@ -11,11 +11,12 @@ export function addProject(e) {
     const name = projectNameInput.value
     if (name == null || name == '') return
     if (projects.find(project => project.name.toLowerCase() == name.toLowerCase()) != null) {
-        alert (`You already have a project named ${name}`) 
+        alert(`You already have a project named ${name}`)
         return
     }
     const project = createProject(name)
     projects.push(project)
+    save()
     renderProjects()
     projectNameInput.value = null
 }
@@ -29,6 +30,8 @@ export function addTask(e) {
     const task = createTask(title, priority, duedate)
     const currentProject = projects.find(project => project.name === projectName.textContent)
     currentProject.tasks.push(task)
+    localStorage.setItem('localStorageCurrentProj', JSON.stringify(currentProject))
+    save()
     renderTasks(currentProject)
     document.querySelector('.title').value = null
     document.querySelector('.priority').selectedIndex = 0
@@ -59,12 +62,16 @@ function findAndDeleteTask(e) {
     const currentTask = currentProject.tasks.find(task => task.title === target.textContent)
     currentProject.tasks.splice(currentProject.tasks.indexOf(currentTask), 1)
     e.target.parentNode.parentNode.parentNode.remove()
+    localStorage.setItem('localStorageCurrentProj', JSON.stringify(currentProject))
+    save()
 }
 
 export function deleteProject() {
     if (confirm("Are you sure you want to delete this project?")) {
         const currentProject = projects.find(project => project.name === projectName.textContent)
         projects.splice(projects.indexOf(currentProject), 1)
+        localStorage.setItem('localStorageCurrentProj', null)
+        save()
         renderProjects()
         tasksContainer.style.visibility = 'hidden'
         deleteProjectBtn.style.visibility = 'hidden'
@@ -86,12 +93,14 @@ function renderModal(e) {
     duedate.value = currentTask.duedate
     notes.value = currentTask.notes
     const saveBtn = document.querySelector(".save-btn")
-    saveBtn.addEventListener('click', e => {
+    saveBtn.addEventListener('click', () => {
         currentTask.title = title.value
         currentTask.priority = priority.value
         currentTask.duedate = duedate.value
         currentTask.notes = notes.value
         modal.classList.remove('visible')
+        localStorage.setItem('localStorageCurrentProj', JSON.stringify(currentProject))
+        save()
         renderTasks(currentProject)
     }, { once: true })
 }
@@ -99,6 +108,8 @@ function renderModal(e) {
 export function sortDuedate() {
     const currentProject = projects.find(project => project.name === projectName.textContent)
     currentProject.tasks.sort((a, b) => a.duedate > b.duedate ? 1 : -1)
+    localStorage.setItem('localStorageCurrentProj', JSON.stringify(currentProject))
+    save()
     renderTasks(currentProject)
 }
 
@@ -106,5 +117,7 @@ export function sortPriority() {
     const currentProject = projects.find(project => project.name === projectName.textContent)
     const order = ['High', 'Med', 'Low', '']
     currentProject.tasks.sort((a, b) => order.indexOf(a.priority) - order.indexOf(b.priority))
+    localStorage.setItem('localStorageCurrentProj', JSON.stringify(currentProject))
+    save()
     renderTasks(currentProject)
 }

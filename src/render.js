@@ -23,6 +23,7 @@ export function renderSelectedProject(e) {
         if (previousProject != null) previousProject.classList.remove("current-project")
         e.target.classList.add("current-project")
         const currentProject = projects.find(project => project.name === e.target.textContent)
+        localStorage.setItem('localStorageCurrentProj', JSON.stringify(currentProject))
         renderTasks(currentProject)
         tasksContainer.style.visibility = 'visible'
         deleteProjectBtn.style.visibility = 'visible'
@@ -32,7 +33,7 @@ export function renderSelectedProject(e) {
 export function renderTasks(currentProject) {
     reset(taskTable)
     projectName.textContent = currentProject.name
-    currentProject.tasks.forEach(task => { 
+    currentProject.tasks.forEach(task => {
         const taskElement = document.importNode(taskTemplate.content, true)
         const title = taskElement.querySelector('#title')
         const priority = taskElement.querySelector('#priority')
@@ -50,4 +51,8 @@ export function reset(element) {
     while (element.firstChild) {
         element.removeChild(element.firstChild)
     }
+}
+
+export function save() {
+    localStorage.setItem('localStorageProjects', JSON.stringify(projects))
 }
