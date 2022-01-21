@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>To-Do List</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="main.js" defer></script>
 </head>
+
 <body>
     <div class="container">
 
@@ -48,26 +51,32 @@
             </form>
             <div class="modal">
                 <div class="modal-content">
-                        <div class="modal-data">
-                            <input class="edit-title">
-                            <select class="edit-priority">
-                                <option value="" disabled selected>Priority</option>
-                                <option>High</option>
-                                <option>Med</option>
-                                <option>Low</option>
-                            </select>
-                            <input class="edit-due-date" type=date>
-                        </div>
-                        <textarea class="notes" placeholder="add notes..."></textarea>
-                        <div class="btns">
-                            <button class="save-btn">Save</button>
-                        </div>
+                    <div class="modal-data">
+                        <input class="edit-title">
+                        <select class="edit-priority">
+                            <option value="" disabled selected>Priority</option>
+                            <option>High</option>
+                            <option>Med</option>
+                            <option>Low</option>
+                        </select>
+                        <input class="edit-due-date" type=date>
+                    </div>
+                    <textarea class="notes" placeholder="add notes..."></textarea>
+                    <div class="btns">
+                        <button class="save-btn">Save</button>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="delete">
             <button class="delete-project-btn"><i class='fas fa-times'></i></button>
         </div>
+    </div>
+    <div class="github">
+        <div>&copy 2022 kwen0</div>
+        <a href="https://github.com/kwen0/todo-list">
+            <img src="./github.png" alt="github logo" class="ghlogo" />
+        </a>
     </div>
     <template class="task-template">
         <tr>
@@ -79,4 +88,5 @@
         </tr>
     </template>
 </body>
+
 </html>
